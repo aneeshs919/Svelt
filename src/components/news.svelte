@@ -1,28 +1,9 @@
 <script>
-    const data = [
-        {
-            icon: "assets/image/arsenal.svg",
-            title: "Arsenal football club",
-            note: "Our Champions League opener kicks off at 8pm UK time at the Groupama Stadium",
-            count: { win: 23, lose: 34, draw: 23 },
-        },
-        {
-            icon: "assets/image/man.png",
-            title: "Manchester United F.C.",
-            note: "Our Champions League opener kicks off at 8pm UK time at the Groupama Stadium",
-            count: { win: 23, lose: 34, draw: 23 },
-        },
-        {
-            icon: "assets/image/totten.png",
-            title: "Tottenham Hotspur F.C.",
-            note: "Our Champions League opener kicks off at 8pm UK time at the Groupama Stadium",
-            count: { win: 23, lose: 34, draw: 23 },
-        },
-    ];
+    import { newsData } from "../store/sportsStore";
 </script>
 
 <div class="newsContainer">
-    {#each data as item}
+    {#each $newsData as item}
         <div class="newsItemWrap">
             <div class="newsItem">
                 <img src={item.icon} width="40" />

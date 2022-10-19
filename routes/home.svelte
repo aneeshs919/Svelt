@@ -1,7 +1,7 @@
 <script>
     import { fly } from "svelte/transition";
     import Sports from "../src/Sports.svelte";
-    import customStore from "../src/store/sportsStore";
+    import { customStore } from "../src/store/sportsStore";
     import Input from "../src/components/input.svelte";
     import News from "../src/components/news.svelte";
     import Players from "../src/components/players.svelte";
@@ -87,7 +87,9 @@
                                 length="2"
                             />
 
-                            <div on:click={addBook} class="button">ADD Book</div>
+                            <div on:click={addBook} class="button">
+                                ADD Book
+                            </div>
                         {:else}
                             {#each $customStore as item, index}
                                 <Players
@@ -97,7 +99,9 @@
                                     onClick={() => removeBook(index)}
                                 />
                             {/each}
-                            <div on:click={addMore} class="button">+ Add More</div>
+                            <div on:click={addMore} class="button">
+                                + Add More
+                            </div>
                         {/if}
                     </div>
                     <div transition:fly={transition} class="bannerImage">
@@ -177,7 +181,6 @@
         cursor: pointer;
         font-size: 18px;
         animation: taadaa 2s 500ms infinite;
-
     }
     .button {
         background-color: black;
