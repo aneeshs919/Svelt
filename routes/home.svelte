@@ -7,16 +7,17 @@
     import Players from "../src/components/players.svelte";
     let selectedSport = "";
     let show = false;
-    const dataValue = {
+    let dataValue = {
         name: "",
         age: "",
+        error: "",
     };
     function onChange(event, type) {
         dataValue[type] = event.target.value;
-        console.log("dataValue", dataValue);
+        if (dataValue.name) dataValue.error = "";
     }
     function addBook() {
-        if (!dataValue.name) return alert("error");
+        if (!dataValue.name) return (dataValue.error = "Enter valid name");
         show = false;
         const newBook = {
             title: dataValue.name,
@@ -30,6 +31,12 @@
         let setSubitem = $customStore;
         setSubitem.splice(index, 1);
         customStore.removeItem(setSubitem);
+        if (index === 0) {
+            dataValue = {
+                name: "",
+                age: "",
+            };
+        }
     }
     function handleMessage(event) {
         selectedSport = event.detail.sport;
@@ -43,6 +50,10 @@
     }
     function addMore() {
         show = true;
+        dataValue = {
+            name: "",
+            age: "",
+        };
     }
     const transition = {
         // delay: 700,
@@ -74,10 +85,10 @@
                                     />
                                 {/each}
                             {/if}
-
                             <Input
                                 onInput={() => onChange(event, "name")}
                                 placeholder="Enter your name"
+                                error={dataValue.error}
                             />
                             <Input
                                 placeholder="Age"
@@ -88,7 +99,7 @@
                             />
 
                             <div on:click={addBook} class="button">
-                                ADD Book
+                                Add Players
                             </div>
                         {:else}
                             {#each $customStore as item, index}
@@ -100,7 +111,7 @@
                                 />
                             {/each}
                             <div on:click={addMore} class="button">
-                                + Add More
+                                + Add More Players
                             </div>
                         {/if}
                     </div>
@@ -125,7 +136,6 @@
 <style>
     main {
         position: relative;
-        /* padding: 100px 0; */
         display: flex;
         justify-content: center;
         flex-direction: column;

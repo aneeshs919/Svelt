@@ -1,6 +1,4 @@
 <script>
-    import { fade } from "svelte/transition";
-
     export let item = "";
     export let index = "";
     export let onClick = "";
@@ -28,6 +26,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 16px;
+        cursor: pointer;
     }
 
     @keyframes shake {
