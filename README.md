@@ -1,8 +1,7 @@
 PROJECT LINK : https://playgo-sage.vercel.app/
 
 
-# This repo is no longer maintained. Consider using `npm init vite` and selecting the `svelte` option or — if you want a full-fledged app framework and don't mind using pre-1.0 software — use [SvelteKit](https://kit.svelte.dev), the official application framework for Svelte.
-
+Decide which sport you want to join. Consider your interests, and availability. Common options include badminton, football, tennis, cricket.
 ---
 
 # svelte app
